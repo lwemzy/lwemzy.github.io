@@ -2,6 +2,13 @@ body {
 	margin: 1em 3em;
 }
 
+.about-me {
+	background-image: url('https://www.nicepng.com/png/full/155-1554165_its-all-about-me-all-about-me-graphics.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+}
+
 img {
 	max-width: 10em;
 }
