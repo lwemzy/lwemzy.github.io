@@ -115,7 +115,7 @@ me.teach('Advanced Software Development');
 
 	Person.prototype.salute = function () {
 		console.log(
-			'Good morning!, and in case I dont see you, good afternoon, good evening and good night!'
+			"Good morning!, and in case I don't see you, good afternoon, good evening and good night!"
 		);
 	};
 
