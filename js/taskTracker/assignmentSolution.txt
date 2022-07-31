@@ -1,0 +1,16 @@
+
+preventDefault in the different handlers is to prevent the default behavior of an event, cancelling it.
+For example to perform validations before submitting a form.
+
+
+A jQuery plugin is simply a new method that we use to extend JQuery's prototype object.
+
+JQuery function call
+find() this is finds the element in the DOM 
+prev() selects previous element in the DOM tree
+append() append dom element in a DOM tree 
+addClass() this get a class selector in css file and adds
+
+
+NOTE: failed to convert $.each() to use arrow functions
+
