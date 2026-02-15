@@ -1,5 +1,5 @@
 body {
-	margin: 1em 3em;
+	margin: 1em 1.5em;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -342,5 +342,161 @@ form {
 	100% {
 		left: 100%;
 		transform: translateX(0%);
+	}
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+	body {
+		margin: 1em;
+	}
+
+	.terminal {
+		font-size: 0.8em;
+		padding: 1em;
+	}
+
+	.home-page .nav-list a {
+		font-size: 1.5rem;
+	}
+
+	.nav-list {
+		gap: 1em;
+	}
+
+	.profile-img {
+		width: 8em;
+		height: 8em;
+	}
+
+	.contact-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-page > a span {
+		font-size: 2em;
+	}
+
+	.form-row input,
+	.form-row textarea {
+		font-size: 0.9em;
+	}
+
+	form {
+		padding: 0.5rem 1rem;
+	}
+
+	/* Resume page */
+	h1 {
+		font-size: 1.6em;
+	}
+
+	h2 {
+		font-size: 1.3em;
+	}
+
+	h3 {
+		font-size: 1em;
+	}
+
+	ul, ol, dl {
+		padding-left: 1.2em;
+	}
+
+	img {
+		max-width: 8em;
+	}
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+	body {
+		margin: 0.5em;
+	}
+
+	.terminal {
+		font-size: 0.6em;
+		padding: 0.5em;
+	}
+
+	.home-page .nav-list a {
+		font-size: 1.1rem;
+	}
+
+	.nav-list {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5em;
+	}
+
+	.profile-img {
+		width: 6em;
+		height: 6em;
+	}
+
+	.contact-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-card {
+		padding: 1em;
+	}
+
+	.card-icon {
+		width: 40px;
+		height: 40px;
+		font-size: 1.2em;
+	}
+
+	.contact-page > a span {
+		font-size: 1.5em;
+	}
+
+	.contact-page h1 {
+		font-size: 1.5em;
+	}
+
+	.form-row {
+		flex-direction: column;
+	}
+
+	.form-row:last-child {
+		flex-direction: row;
+	}
+
+	form {
+		padding: 0.5rem;
+	}
+
+	.banner-success,
+	.banner-error {
+		font-size: 0.85em;
+		padding: 0.8em 1em;
+	}
+
+	/* Resume page */
+	h1 {
+		font-size: 1.3em;
+	}
+
+	h2 {
+		font-size: 1.1em;
+	}
+
+	h3 {
+		font-size: 0.95em;
+		word-wrap: break-word;
+	}
+
+	ul, ol, dl {
+		padding-left: 1em;
+	}
+
+	li {
+		font-size: 0.9em;
+	}
+
+	img {
+		max-width: 100%;
 	}
 }
