@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <title>Contact - Alex Lwembawo Mukasa</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body class="contact-page" style="background-color: #2a2a2a;">
+    <a href="index.html" aria-label="Back to home"><span class="material-icons">arrow_back</span></a>
+    <h1>Contact Me</h1>
+    <div class="contact-cards">
+        <div class="contact-card">
+            <span class="card-icon"><span class="material-icons">location_on</span></span>
+            <div>
+                <h3>My Address</h3>
+                <p>Salt Lake City, UTAH</p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <span class="card-icon"><span class="material-icons">share</span></span>
+            <div>
+                <h3>Social Profiles</h3>
+                <p>
+                    <a href="https://x.com/lwemzy"><span class="mdi mdi-twitter"></span></a>
+                    <a href="https://github.com/lwemzy"><span class="mdi mdi-github"></span></a>
+                    <a href="https://www.linkedin.com/in/alex-lwembawo-mukasa"><span
+                            class="mdi mdi-linkedin"></span></a>
+                </p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <span class="card-icon"><span class="material-icons">email</span></span>
+            <div>
+                <h3>Email Me</h3>
+                <p>alexlwembawo@gmail.com</p>
+            </div>
+        </div>
+        <div class="contact-card">
+            <span class="card-icon"><span class="material-icons">phone</span></span>
+            <div>
+                <h3>Call Me</h3>
+                <p><a href="tel:+1-641-233-0008">641-233-0008</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="banner-success"><span class="material-icons">check_circle</span> Message sent successfully!</div>
+    <div class="banner-error"><span class="material-icons">error</span> Failed to send message. Please try again.<span
+            class="material-icons banner-close">close</span></div>
+    <div class="contact-container">
+        <form id="contact-form">
+            <div class="form-row">
+                <input type="text" id="name" name="name" placeholder="Your Name" required style="margin-right: .5rem;">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-row">
+                <input type="text" id="subject" name="subject" placeholder="Subject">
+            </div>
+            <div class="form-row">
+                <textarea id="message" name="message" rows="8" placeholder="Message" required></textarea>
+            </div>
+            <span class="loader"></span>
+            <div class="form-row">
+                <button type="submit"><span class="material-icons">send</span></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        emailjs.init('06c1m3Tq2PTNtkHlQ');
+
+        var loader = document.querySelector('.loader');
+        var sendBtn = document.querySelector('.form-row button');
+        var successBanner = document.querySelector('.banner-success');
+        var errorBanner = document.querySelector('.banner-error');
+
+        document.querySelector('.banner-close').addEventListener('click', function () {
+            errorBanner.style.display = 'none';
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            sendBtn.style.display = 'none';
+            loader.style.display = 'block';
+
+            var params = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            emailjs.send('service_yi3k669', 'template_w2ulilj', params)
+                .then(function () {
+                    setTimeout(function () {
+                        loader.style.display = 'none';
+                        sendBtn.style.display = 'flex';
+                        errorBanner.style.display = 'none';
+                        successBanner.style.display = 'flex';
+                        setTimeout(function () {
+                            successBanner.style.display = 'none';
+                        }, 3000);
+                        document.getElementById('contact-form').reset();
+                    }, 3000);
+                })
+                .catch(function (error) {
+                    setTimeout(function () {
+                        loader.style.display = 'none';
+                        sendBtn.style.display = 'flex';
+                        errorBanner.style.display = 'flex';
+                    }, 3000);
+                });
+        });
+    </script>
+</body>
+
+</html>
