@@ -7,29 +7,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap">
 </head>
 
-<body>
-    <div>
-        <img src="./imgs/self.jpg" alt="">
+<body class="home-page">
+    <div class="terminal" id="terminal"></div>
+
+    <div class="home-content">
+        <div>
+            <ul class="nav-list">
+                <li><a href="#" class="active">Home Page</a></li>
+                <li><a href="aboutme.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a> </li>
+            </ul>
+        </div>
     </div>
 
-    <div>
-        <p>Alex Lwembawo Mukasa</p>
-    </div>
+    <script>
+        var lines = [
+            '$ ssh alex@server.dev',
+            '> Connected to secure server...',
+            '> Loading profile...',
+            '> Name: Alex Lwembawo Mukasa',
+            '> Role: Senior Software Engineer',
+            '> Stack: Java, TypeScript, Spring Boot, Angular',
+            '> Location: Salt Lake City, UTAH',
+            '> LinkedIn: https://www.linkedin.com/in/alex-lwembawo-mukasa/',
+            '$ cat welcome.txt',
+            '> Welcome to my portfolio site.',
+            '$ _'
+        ];
 
-    <div>
-        <ul>
-            <li><a href="#">Lab01 - Home Page</a></li>
-            <li><a href="aboutme.html">Lab02 - About Me</a></li>
-            <li><a href="http://">Lab02 - Recipe</a> </li>
-            <li><a href="tomatter.html">Lab03 - Movie Review</a></li>
-        </ul>
-    </div>
+        var terminal = document.getElementById('terminal');
+        var lineIndex = 0;
+        var charIndex = 0;
+        var currentLine = '';
 
-    <a href="http://validator.w3.org/check/referer" target="_blank">
-        <img src="http://mumstudents.org/cs472/2014-09/images/w3c-html.png" alt="html validator" srcset="">
-    </a>
+        function type() {
+            if (lineIndex < lines.length) {
+                if (charIndex < lines[lineIndex].length) {
+                    currentLine += lines[lineIndex].charAt(charIndex);
+                    terminal.innerHTML = getRendered() + '<span class="cursor">|</span>';
+                    charIndex++;
+                    setTimeout(type, 40);
+                } else {
+                    currentLine = '';
+                    charIndex = 0;
+                    lineIndex++;
+                    setTimeout(type, 300);
+                }
+            } else {
+                setTimeout(function () {
+                    lineIndex = 0;
+                    terminal.innerHTML = '';
+                    type();
+                }, 5000);
+            }
+        }
+
+        function linkify(text) {
+            return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="terminal-link">$1</a>');
+        }
+
+        terminal.addEventListener('click', function (e) {
+            if (e.target.classList.contains('terminal-link')) {
+                e.preventDefault();
+                window.open(e.target.href, '_blank');
+            }
+        });
+
+        function getRendered() {
+            var result = '';
+            for (var i = 0; i < lineIndex; i++) {
+                result += linkify(lines[i]) + '\n';
+            }
+            result += linkify(currentLine);
+            return result;
+        }
+
+        type();
+    </script>
 </body>
 
 </html>
